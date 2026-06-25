@@ -1,3 +1,7 @@
+![Latest](https://ghcr-badge.egpl.dev/simons-containers/distroless-pgweb/latest_tag?ignore=latest,sha256*&label=latest)  
+![Size](https://ghcr-badge.egpl.dev/simons-containers/distroless-pgweb/size?tag=latest)  
+![Tags](https://ghcr-badge.egpl.dev/simons-containers/distroless-pgweb/tags?ignore=latest,sha256*)  
+
 # Distroless pgweb container
 
 Bare-bones distroless pgweb container image.
