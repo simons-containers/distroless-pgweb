@@ -1,0 +1,9 @@
+{
+  "pgweb": {
+    "version": "0.17.0",
+    "purl": "pkg:generic/pgweb",
+    "release": {
+      "url_pattern": "https://github.com/sosedoff/pgweb/releases/download/v{version}/pgweb_linux_amd64.zip"
+    }
+  }
+}
