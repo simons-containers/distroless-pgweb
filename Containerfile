@@ -1,9 +1,7 @@
-FROM archlinux:base-devel-20260308.0.497099 AS builder
+FROM cgr.dev/chainguard/curl:latest-dev AS fetch
 
 ARG PGWEB_VERSION
-ARG PGWEB_RELEASE=https://github.com/sosedoff/pgweb/releases/download/v${PGWEB_VERSION}/pgweb_linux_amd64.zip
-
-RUN pacman -Syu --noconfirm unzip
+ARG PGWEB_RELEASE
 
 WORKDIR /extract/pgweb
 RUN curl --silent --show-error --location --output pgweb.zip \
@@ -15,7 +13,7 @@ FROM scratch
 
 ARG PGWEB_VERSION
 
-COPY --from=builder /extract/pgweb/pgweb_linux_amd64 /usr/bin/pgweb
+COPY --from=fetch /extract/pgweb/pgweb_linux_amd64 /usr/bin/pgweb
 
 ENTRYPOINT ["/usr/bin/pgweb"]
 CMD ["--bind=0.0.0.0"]
