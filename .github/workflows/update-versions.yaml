@@ -30,9 +30,16 @@ jobs:
               | sort -V \
               | tail -1)
   
-            yq -i ".pgweb= \"$PGWEB\"" versions.yaml
-            git diff versions.yaml
+            : ${PGWEB:?}
 
+            jq \
+              --arg pgweb "$PGWEB" \
+              '
+                .pgweb.version  = $pgweb
+              ' sources.json > tmp.json && mv tmp.json sources.json
+
+            git diff sources.json
+            
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v8
         with:
